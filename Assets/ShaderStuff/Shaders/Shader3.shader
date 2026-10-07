@@ -127,11 +127,11 @@ Shader "Custom/Shader3"
 
                 // Combine diffuse lighting with ambient spherical harmonics lighting
 
-                half3 finalColor = diffuse + ambientSH * texColor.rgb * _BaseColor.rgb;
+                half3 finalColor = diffuse + ambientSH * texColor.rgb * _BaseColor.rgb * 0.2;
 
                 // Return the final color
 
-                return half4(finalColor, 1.0);
+                return half4(finalColor, 2.0);
 
             }
 
