@@ -75,7 +75,7 @@ Shader "Custom/FresnelShader"
                 
                 float3 n = SafeNormalize(IN.normalWS);
                 float ndotv = saturate(dot(n, viewDirWS));
-                float fres = pow(1.0 - ndotv, _RimPower);
+                float fres = pow(1 - ndotv, _RimPower);
                 color += (_RimColor.rgb * fres) * _RimStrength;
 
                 return half4(color, 1.0);

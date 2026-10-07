@@ -1,7 +1,7 @@
 Shader "Custom/Shader3"
 
 {
-
+    //simple diffuse shader
     Properties
 
     {
@@ -101,37 +101,22 @@ Shader "Custom/Shader3"
 
                 half4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv);
 
-               
-
-                // Fetch the main light in URP
 
                 Light mainLight = GetMainLight();
-
                 half3 lightDir = normalize(mainLight.direction);
 
-                // Normalize the world space normal
-
                 half3 normalWS = normalize(IN.normalWS);
-
-                // Calculate Lambertian diffuse lighting (NdotL)
-
                 half NdotL = saturate(dot(normalWS, lightDir));
-
-                // Calculate ambient lighting using spherical harmonics (SH)
-
                 half3 ambientSH = SampleSH(normalWS);
-
-                // Combine the base color and texture with the diffuse light
-
                 half3 diffuse = texColor.rgb * _BaseColor.rgb * NdotL;
 
-                // Combine diffuse lighting with ambient spherical harmonics lighting
+              
 
                 half3 finalColor = diffuse + ambientSH * texColor.rgb * _BaseColor.rgb * 0.2;
 
-                // Return the final color
+                
 
-                return half4(finalColor, 2.0);
+                return half4(finalColor, .0);
 
             }
 
